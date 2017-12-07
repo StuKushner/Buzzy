@@ -32,7 +32,7 @@ function runQuery(numRecipes, queryURL) {
 			var wells = $("<div>");
 			wells.addClass("well");
 			wells.attr("id", "recipe-well-" + recipeCounter);
-			$("#well-section" /* PLACEHOLDER ID */).append(wells);
+			$("#well-section").append(wells);
 
 			//Confirm that the JSON isn't missing any details
 			//If the recipe has a title, include it with the drink picture
