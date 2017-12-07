@@ -35,19 +35,34 @@ function runQuery(numRecipes, queryURL) {
 			$("#well-section").append(wells);
 
 			//Confirm that the JSON isn't missing any details
-			//If the recipe has a title, include it with the drink picture
+			//If the recipe has a picture, include it put it in
 			if (alcoholData.response.drinks[i].strIngredient1 !== "null") {
 				$("#recipe-well-" + recipeCounter).append(
 					"<h3 class='nameOfCocktail><span class='label label-primary'>" +
 					recipeCounter + "<span><strong> " +
 					alcoholData.response./*whatever*/.drinkID + "</strong></h3>"
 					);
+				//Log name of cocktail to console
+				console.log(nameOfCocktail /*Placeholder*/);
 			}
 
-			//Log name of cocktail to console
-			console.log(nameOfCocktail /*Placeholder*/)	
+				
 
-			//get drink id of first 5
+			//if recipe has a name, put it in
+			if (alcoholData.response.drinks[i].strIngredient1 !== "null") {
+				$("#recipe-well-" + recipeCounter).append(
+					"<h3 class='nameOfCocktail><span class='label label-primary'>" +
+					recipeCounter + "<span><strong> " +
+					alcoholData.response./*whatever*/.drinkID + "</strong></h3>"
+					);
+				//Log it
+				console.log(nameOfCocktail /*Placeholder*/);
+			}
+			
+			//Do same for ingredients and log them all
+			console.log(nameOfCocktail /*Placeholder*/);
+			console.log(nameOfCocktail /*Placeholder*/);
+			console.log(nameOfCocktail /*Placeholder*/);
 
 		}
 
