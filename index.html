@@ -12,6 +12,9 @@
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <!--Parsley.js -->
+    <script src="parsley.min.js"></script>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -106,6 +109,16 @@
                   <label for="third-ingredient">Garnish</label>
                   <input type="text" class="form-control" id="third-ingredient">
                 </div>
+                <div class="form-group">
+                  <label for="pwd">How Many Results Do You Want?</label>
+                  <select class="form-control", id="num-recipes-select">
+                    <option value="1" selected>1</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                  </select>
+                </div>
                 
                 <button type="submit" class="btn btn-success" id="add-submit-btn" style="background-color:#7CB900">Submit</button>
                 <button type="submit" class="btn btn-default" id="add-reset-btn" style="background-color:#006bc8;color:#ffffff">Reset</button>
@@ -133,26 +146,91 @@
 
     </div>
     <div id="basic1-modal-content">
-      <form action="" class="login-form" id="ex2" style="display: inline-block;">
-  <h4 style="color:#ffffff;margin-bottom:10px;">Please login</h4>
-  <p><label>Username:&nbsp;</label><input type="text"></p>
-  <p><label>Password:&nbsp;</label><input type="password"></p>
-  <p><input type="submit"  class="btn btn-success" value="Login"></p>
-<!--<a href="#close-modal" rel="modal:close" class="close-modal ">Close</a>--></form>
+      <div class="bs-callout bs-callout-warning hidden">
+  <h4>Oh snap!</h4>
+  <p>This form seems to be invalid :(</p>
+</div>
+
+<div class="bs-callout bs-callout-info hidden">
+  <h4>Yay!</h4>
+  <p>Everything seems to be ok :)</p>
+</div>
+<h2>Login</h2>
+<p>You must be over 21 to continue!</p>
+<form id="demo-form" data-parsley-validate="">
+  <label for="fullname">Username * :</label>
+  <input type="text" class="form-control" name="fullname" required="">
+<br/>
+  <label for="email">Email * :</label>
+  <input type="email" class="form-control" name="email" data-parsley-trigger="change" required="">
+<br/>
+  
+  <input type="submit" class="btn btn-default" value="Submit">
+
+  
+</form>
+
+<script type="text/javascript">
+$(function () {
+  $('#demo-form').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  })
+  .on('form:submit', function() {
+    return false; // Don't submit form for this demo
+  });
+});
+</script>
+      
+
 
     </div>
+    <!-- sign up form -->
     <div id="basic-modal-content">
-      <form action="" class="login-form" id="ex2" style="display: inline-block;">
-  <h4 style="color:#ffffff;margin-bottom:10px;">Please register</h4>
-  <p><label>Name:&nbsp;</label><input type="name"></p>
-  <p><label>Age:&nbsp;</label><input type="age"></p>
-  <p><label>Email:&nbsp;</label><input type="email"></p>
-  <p><input type="submit"  class="btn btn-success" value="Submit"></p>
-<!--<a href="#close-modal" rel="modal:close" class="close-modal ">Close</a>--></form>
+      <div class="bs-callout bs-callout-warning hidden">
+  <h4>Oh snap!</h4>
+  <p>This form seems to be invalid :(</p>
+</div>
+
+<div class="bs-callout bs-callout-info hidden">
+  <h4>Yay!</h4>
+  <p>Everything seems to be ok :)</p>
+</div>
+<h2>Sign Up</h2>
+<form id="demo-form" data-parsley-validate="">
+  <label for="fullname">Full Name * :</label>
+  <input type="text" class="form-control" name="fullname" required="">
+<br/>
+  <label for="email">Email * :</label>
+  <input type="email" class="form-control" name="email" data-parsley-trigger="change" required="">
+<br/>
+  <label for="birthday">Birthday (YOU MUST BE OVER 21 TO PROCEED!) * :</label>
+  <input type="birthday" class="form-control" name="birthday" data-parsley-trigger="change" required="">
+
+  <br/>
+  <input type="submit" class="btn btn-default" value="Submit">
+
+  
+</form>
+
+<script type="text/javascript">
+$(function () {
+  $('#demo-form').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  })
+  .on('form:submit', function() {
+    return false; // Don't submit form for this demo
+  });
+});
+</script>
+      
     </div>
 
     <!-- Script -->
-    <script src="assets/app.js"></script>
+<script src="assets/app.js"></script>
 <!-- Load jQuery, SimpleModal and Basic JS files -->
 <script type='text/javascript' src='js/jquery.js'></script>
 <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
