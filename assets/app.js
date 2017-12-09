@@ -1,5 +1,7 @@
+
 //API
 var apiKey = "1";
+
 
 //User Inputs
 var ingredient1 = "";
@@ -13,6 +15,8 @@ var recipeCounter = 0;
 var numResults = 0;
 
 //FUNCTIONS
+
+
 
 function runQuery(numRecipes, queryURL1) {
 
@@ -158,3 +162,4 @@ $("#add-reset-button").click(function() {
 	recipeCounter = 0;
 	$("#well-section").empty();
 });
+
