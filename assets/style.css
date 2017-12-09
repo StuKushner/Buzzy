@@ -1,6 +1,12 @@
 body{
 	background-image: url("images/background.png");
 }
+
+.shrink {
+    width: 200px;
+    height: 200px;
+    	}
+
 h1 {
 	color:#fff;
 	font-family: 'Open Sans', sans-serif;
