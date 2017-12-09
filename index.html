@@ -10,7 +10,6 @@
     <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
 
     <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
     <!--Parsley.js -->
@@ -115,7 +114,9 @@
                 </div>
                 <div class="form-group">
                   <label for="pwd">How Many Results Do You Want?</label>
+
                   <select class="form-control" id="num-recipes-select">
+
                     <option value="1" selected>1</option>
                     <option value="5">5</option>
                     <option value="10">10</option>
@@ -153,6 +154,7 @@
 
       <div id="display">
       </div>
+            <div class="panel-body" id="well-section">
             </div>
           </div>
         </div>
@@ -175,12 +177,10 @@
   <label for="Username">Username * :</label>
   <input type="text" class="form-control" name="Username" required="" id="Username">
 <br/>
-<<<<<<< HEAD
 
-=======
   <label for="Password">Password * :</label>
->>>>>>> 370921b40ae66e8d374819aca4ff9b5250bd8f78
   <input type="Password" class="form-control" name="Password" data-parsley-trigger="change" required="" id="Password">
+
 <br/>
   
   <input type="submit" class="btn btn-default" value="Submit" id="add-user-pass-button">
@@ -223,13 +223,11 @@ $(function () {
   <label for="email">Email * :</label>
   <input type="email" class="form-control" name="email" data-parsley-trigger="change" required="" id="email">
 <br/>
-<<<<<<< HEAD
+
   <label for="birthday">Birthday (YOU MUST BE OVER 21 TO PROCEED!) * :</label>
+
   <input type="text" class="form-control" name="birthday" data-parsley-trigger="change" required="" id="birthday">
-=======
-  <label for="email">Birthday (YOU MUST BE OVER 21 TO PROCEED!) * :</label>
-  <input type="email" class="form-control" name="email" data-parsley-trigger="change" required="">
->>>>>>> 370921b40ae66e8d374819aca4ff9b5250bd8f78
+
 
   <br/>
   <input type="submit" class="btn btn-default" value="Submit" id="add-new-user-btn">

@@ -1,30 +1,3 @@
- // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCT-acP_Tm1dyTBXxzyUMl3qsH-wRDuQlA",
-    authDomain: "buzzy-88391.firebaseapp.com",
-    databaseURL: "https://buzzy-88391.firebaseio.com",
-    projectId: "buzzy-88391",
-    storageBucket: "buzzy-88391.appspot.com",
-    messagingSenderId: "446452884128"
-  };
-  firebase.initializeApp(config);
-
-var buzzy = firebase.database();
-
-// Populate Firebase Database with initial data
-// Button for adding username/password
-$("#add-user-pass-button").on("click", function() {
-
-  // Grabs user input
-  var userName = $("#Username").val().trim();
-  var Password = $("#Password").val().trim();
-  var Login = $("#add-user-pass-button").val().trim();
-
-  var userName = $("#Username").val().trim();
-
- 
-
-});
 
 //User Inputs
 var ingre1 = "";
@@ -39,6 +12,7 @@ var numResults = 0;
 
 //FUNCTIONS
 
+
 function runQuery(numRecipes, queryURL1) {
 
 	$.ajax({
@@ -46,6 +20,15 @@ function runQuery(numRecipes, queryURL1) {
 		method: "GET"
 	}).done(function(response) {
 		console.log(queryURL1);
+
+function runQuery(numRecipes, queryURL) {
+
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).done(function(response) {
+		console.log(queryURL);
+
 		console.log(response);
 
 		for (var i = 0; i < numRecipes; i++) {
@@ -182,5 +165,7 @@ $("#add-submit-button").click(function(event) {
 $("#add-reset-button").click(function() {
 	recipeCounter = 0;
 	$("#well-section").empty();
+
 })
  
+
