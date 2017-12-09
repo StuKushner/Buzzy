@@ -1,16 +1,21 @@
 
+//API
+var apiKey = "1";
+
+
 //User Inputs
 var ingre1 = "";
 var ingre2 = "";
 var ingre3 = "";
 
 //query URL
-var queryURL1="http://www.thecocktaildb.com/api/json/v1/1/filter.php?i="+ ingre1;
+var queryURL1 ="http://www.thecocktaildb.com/api/json/v1/" + apiKey + "/filter.php?i=" + ingre1;
 
 var recipeCounter = 0;
 var numResults = 0;
 
 //FUNCTIONS
+
 
 
 function runQuery(numRecipes, queryURL1) {
@@ -20,15 +25,6 @@ function runQuery(numRecipes, queryURL1) {
 		method: "GET"
 	}).done(function(response) {
 		console.log(queryURL1);
-
-function runQuery(numRecipes, queryURL) {
-
-	$.ajax({
-		url: queryURL,
-		method: "GET"
-	}).done(function(response) {
-		console.log(queryURL);
-
 		console.log(response);
 
 		for (var i = 0; i < numRecipes; i++) {
@@ -166,6 +162,6 @@ $("#add-reset-button").click(function() {
 	recipeCounter = 0;
 	$("#well-section").empty();
 
-})
+});
  
 
