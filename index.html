@@ -10,7 +10,7 @@
     <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
 
     <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
     <!--Parsley.js -->
     <script src="parsley.min.js"></script>
@@ -21,12 +21,15 @@
 
     <!-- My stylesheet -->
     <link rel="stylesheet" href="assets/style.css">
-	
-	   <!-- Google fonts -->
+  
+     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
 
     <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+
+    <!-- BuzzyAPI.js -->
+    <script src="assets/BuzzyAPI.js"></script>
 
   
 
@@ -111,7 +114,9 @@
                 </div>
                 <div class="form-group">
                   <label for="pwd">How Many Results Do You Want?</label>
-                  <select class="form-control", id="num-recipes-select">
+
+                  <select class="form-control" id="num-recipes-select">
+
                     <option value="1" selected>1</option>
                     <option value="5">5</option>
                     <option value="10">10</option>
@@ -138,6 +143,17 @@
             <div class="panel-heading">
               <h3 class="panel-title"><strong>Results</strong></h3>
             </div>
+
+            <div class="panel-body" id="well-section">
+              <form id="ingredient-form">
+                 <label for="spirit-ingredient-input">Spirit</label>
+                 <input type="text" id="spirit-ingredient-input">
+              <br>
+                <input id="add-submit-btn" type="submit" class="submit" value="Search for Matches">
+             </form>
+
+      <div id="display">
+      </div>
             <div class="panel-body" id="well-section">
             </div>
           </div>
@@ -158,14 +174,18 @@
 <h2>Login</h2>
 <p>You must be over 21 to continue!</p>
 <form id="demo-form" data-parsley-validate="">
-  <label for="fullname">Username * :</label>
-  <input type="text" class="form-control" name="fullname" required="">
+  <label for="Username">Username * :</label>
+  <input type="text" class="form-control" name="Username" required="" id="Username">
 <br/>
+
+
+
   <label for="email">Email * :</label>
   <input type="email" class="form-control" name="email" data-parsley-trigger="change" required="">
+
 <br/>
   
-  <input type="submit" class="btn btn-default" value="Submit">
+  <input type="submit" class="btn btn-default" value="Submit" id="add-user-pass-button">
 
   
 </form>
@@ -200,17 +220,21 @@ $(function () {
 <h2>Sign Up</h2>
 <form id="demo-form" data-parsley-validate="">
   <label for="fullname">Full Name * :</label>
-  <input type="text" class="form-control" name="fullname" required="">
+  <input type="text" class="form-control" name="fullname" required="" id="fullname">
 <br/>
   <label for="email">Email * :</label>
-  <input type="email" class="form-control" name="email" data-parsley-trigger="change" required="">
+  <input type="email" class="form-control" name="email" data-parsley-trigger="change" required="" id="email">
 <br/>
+
+
   <label for="birthday">Birthday (YOU MUST BE OVER 21 TO PROCEED!) * :</label>
-  <input type="birthday" class="form-control" name="birthday" data-parsley-trigger="change" required="">
+
+  <input type="text" class="form-control" name="birthday" data-parsley-trigger="change" required="" id="birthday">
+
 
 
   <br/>
-  <input type="submit" class="btn btn-default" value="Submit">
+  <input type="submit" class="btn btn-default" value="Submit" id="add-new-user-btn">
 
   
 </form>
@@ -233,7 +257,6 @@ $(function () {
     <!-- Script -->
 <script src="assets/app.js"></script>
 <!-- Load jQuery, SimpleModal and Basic JS files -->
-<script type='text/javascript' src='js/jquery.js'></script>
 <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
 <script type='text/javascript' src='js/basic.js'></script>
 <!-- Link to the documentation for this modal: http://www.ericmmartin.com/projects/simplemodal/  -->
