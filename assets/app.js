@@ -1,12 +1,8 @@
-
 //API
 var apiKey = "1";
 
 //User Inputs
 var ingredient1 = "";
-var ingredient2 = "";
-var ingredient3 = "";
-
 //query URL
 var queryURL1 ="http://www.thecocktaildb.com/api/json/v1/" + apiKey + "/filter.php?i=";
 
@@ -14,8 +10,6 @@ var recipeCounter = 0;
 var numResults = 0;
 
 //FUNCTIONS
-
-
 
 function runQuery(numRecipes, queryURL) {
 
@@ -142,19 +136,9 @@ $(document).on("click", "#add-submit-btn", function(event) {
 	$("#well-section").empty();
 	ingredient1 = $("#first-ingredient").val().trim();
 	var searchURL = queryURL1 + ingredient1;
-	//ingredient2 = $("#second-ingredient").val().trim();
-	//ingredient3 = $("#third-ingredient").val().trim();
 	numResults = $("#num-recipes-select").val();
 	console.log(numResults);
 	console.log(searchURL);
-
-	if (ingredient2) {
-		searchURL = searchURL + "i=" + ingredient2;
-	}
-
-	if (ingredient3) {
-		searchURL = searchURL + "i=" + ingredient3;
-	}
 
 	runQuery(numResults, searchURL);
 });
