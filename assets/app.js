@@ -4,12 +4,12 @@ var apiKey = "1";
 
 
 //User Inputs
-var ingre1 = "";
-var ingre2 = "";
-var ingre3 = "";
+var ingredient1 = "";
+var ingredient2 = "";
+var ingredient3 = "";
 
 //query URL
-var queryURL1 ="http://www.thecocktaildb.com/api/json/v1/" + apiKey + "/filter.php?i=" + ingre1;
+var queryURL1 ="http://www.thecocktaildb.com/api/json/v1/" + apiKey + "/filter.php?i=" + ingredient1;
 
 var recipeCounter = 0;
 var numResults = 0;
@@ -161,7 +161,5 @@ $("#add-submit-button").click(function(event) {
 $("#add-reset-button").click(function() {
 	recipeCounter = 0;
 	$("#well-section").empty();
-
 });
- 
 
