@@ -4,128 +4,62 @@ var apiKey = "1";
 //User Inputs
 var ingredient1 = "";
 //query URL
-var queryURL1 ="http://www.thecocktaildb.com/api/json/v1/" + apiKey + "/filter.php?i=";
+var queryURL1 = "http://www.thecocktaildb.com/api/json/v1/" + apiKey + "/filter.php?i=";
 
 var recipeCounter = 0;
 var numResults = 0;
 
 //FUNCTIONS
 
-function runQuery(numRecipes, queryURL) {
+function runQuery(numRecipes) {
 
 	$.ajax({
-		url: queryURL,
+		url: queryURL1,
 		method: "GET"
-	}).done(function(response) {
-		console.log(queryURL);
-		console.log(response);
+	}).done(function(response1) {
+		console.log(queryURL1);
+		console.log(response1);
 
 		for (var i = 0; i < numRecipes; i++) {
+			var drinkID = response1.drinks[i].idDrink;
+			var queryURL2 = "http://www.thecocktaildb.com/api/json/v1/" + apiKey + "/lookup.php?i=" + drinkID;
+
 			recipeCounter++;
 			var wells = $("<div>");
 			wells.addClass("well");
 			wells.attr("id", "recipe-well-" + recipeCounter);
 			$("#well-section").append(wells);
 
-			/*if (response.drinks[i].strDrinkThumb !== "null") {
+			if (response1.drinks[i].strDrinkThumb !== "null") {
 				$("#recipe-well-" + recipeCounter).append(
-					var drinkDisplay = $("<img>");
-					drinkDisplay.attr("src", response.drinks[0].strDrinkThumb);
-					drinkDisplay.attr("class", "displayDrinkPics");
-					drinkDisplay.width(200);
+					"<span><strong>" + response1.drinks[i].strDrinkThumb + "</strong></h3>"
 				);
-				console.log(response.drinks[i].strDrinkThumb);
-			}*/
+				console.log(response1.drinks[i].strDrinkThumb);
+			}
 
-			if (response.drinks[i].strDrink !== "null") {
+			if (response1.drinks[i].strDrink !== "null") {
 				$("#recipe-well-" + recipeCounter).append(
 					"<h3 class='nameOfCocktail><span class='label label-primary'>" +
 					recipeCounter + ") <span><strong> " +
-					response.drinks[i].strDrink + "</strong></h3>"
+					response1.drinks[i].strDrink + "</strong></h3>"
 				);
-				console.log(response.drinks[i].strDrink);
+				console.log(response1.drinks[i].strDrink);
 			}
 
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure1 + " " + response.drinks[i].strIngredient1 + "</h5>");
+			$.ajax({
+				url: queryURL2,
+				method: "GET"
+			}).done(function(response2) {
+				console.log(queryURL2);
+				console.log(response2);
 
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure2 + " " + response.drinks[i].strIngredient2 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure3 + " " + response.drinks[i].strIngredient3 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure4 + " " + response.drinks[i].strIngredient4 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure5 + " " + response.drinks[i].strIngredient5 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure6 + " " + response.drinks[i].strIngredient6 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure7 + " " + response.drinks[i].strIngredient7 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure8 + " " + response.drinks[i].strIngredient8 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure9 + " " + response.drinks[i].strIngredient9 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure10 + " " + response.drinks[i].strIngredient10 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure11 + " " + response.drinks[i].strIngredient11 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure12 + " " + response.drinks[i].strIngredient12 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure13 + " " + response.drinks[i].strIngredient13 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure14 + " " + response.drinks[i].strIngredient14 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strMeasure15 + " " + response.drinks[i].strIngredient15 + "</h5>");
-
-			$("#recipe-well-" + recipeCounter)
-			.append("<h5>" + response.drinks[i].strInstructions + "</h5>");
-
-			console.log(response.drinks[i].strMeasure1);
-			console.log(response.drinks[i].strIngredient1);
-			console.log(response.drinks[i].strMeasure2);
-			console.log(response.drinks[i].strIngredient2);
-			console.log(response.drinks[i].strMeasure3);
-			console.log(response.drinks[i].strIngredient3);
-			console.log(response.drinks[i].strMeasure4);
-			console.log(response.drinks[i].strIngredient4);
-			console.log(response.drinks[i].strMeasure5);
-			console.log(response.drinks[i].strIngredient5);
-			console.log(response.drinks[i].strMeasure6);
-			console.log(response.drinks[i].strIngredient6);
-			console.log(response.drinks[i].strMeasure7);
-			console.log(response.drinks[i].strIngredient7);
-			console.log(response.drinks[i].strMeasure8);
-			console.log(response.drinks[i].strIngredient8);
-			console.log(response.drinks[i].strMeasure9);
-			console.log(response.drinks[i].strIngredient9);
-			console.log(response.drinks[i].strMeasure10);
-			console.log(response.drinks[i].strIngredient10);
-			console.log(response.drinks[i].strMeasure11);
-			console.log(response.drinks[i].strIngredient11);
-			console.log(response.drinks[i].strMeasure12);
-			console.log(response.drinks[i].strIngredient12);
-			console.log(response.drinks[i].strMeasure13);
-			console.log(response.drinks[i].strIngredient13);
-			console.log(response.drinks[i].strMeasure14);
-			console.log(response.drinks[i].strIngredient14);
-			console.log(response.drinks[i].strMeasure15);
-			console.log(response.drinks[i].strIngredient15);
-			console.log(response.drinks[i].strInstructions);
-
+				if (response2.drinks[0].strInstructions !== "null") {
+					$("#recipe-well-" + recipeCounter).append(
+						response2.drinks[0].strInstructions
+					);
+					console.log(response2.drinks[0].strInstructions);
+				}
+			})
 		}
 	});
 }
@@ -147,4 +81,3 @@ $(document).on("click", "#add-reset-btn", function() {
 	recipeCounter = 0;
 	$("#well-section").empty();
 });
-
