@@ -50,7 +50,7 @@ function runQuery(numRecipes, queryURL1) {
 					drinkNumber + "<span><strong> " +
 					response.drinks[i].strDrink + "</strong></h3>"
 				);
-				console.log(response.drink[i].strDrink);
+				console.log(response.drinks[i].strDrink);
 			}
 
 			$("#recipe-well-" + drinkNumber)
@@ -137,7 +137,7 @@ function runQuery(numRecipes, queryURL1) {
 	});
 }
 
-$("#add-submit-button").click(function(event) {
+$("#add-submit-btn").click(function(event) {
 	event.preventDefault();
 	recipeCounter = 0;
 	$("#well-section").empty();
