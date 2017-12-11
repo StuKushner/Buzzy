@@ -48,33 +48,35 @@ function runQuery(numRecipes, queryURL1) {
 				console.log(response1.drinks[i].strDrink);
 			}
 
-			$.ajax({
-				url: queryURL2,
-				method: "GET"
-			}).done(function(response2) {
-				console.log(queryURL2);
-				console.log(response2);
+			(function(counter) {
+				$.ajax({
+					url: queryURL2,
+					method: "GET"
+				}).done(function(response2) {
+					console.log(queryURL2);
+					console.log(response2);
 
-				for (var i = 0; i <= 15; i++) {
-					var measurement = response2.drinks[0]['strMeasure' + i];
-					var ingredient = response2.drinks[0]['strIngredient' + i];
+					for (var j = 0; j <= 15; j++) {
+						var measurement = response2.drinks[0]['strMeasure' + j];
+						var ingredient = response2.drinks[0]['strIngredient' + j];
 
-					if (ingredient) {
-						$("#recipe-well-" + recipeCounter).append(
-							measurement + " " + ingredient + "<br>"
-						);
-						console.log(measurement);
-						console.log(ingredient);
+						if (ingredient) {
+							$("#recipe-well-" + counter).append(
+								measurement + " " + ingredient + "<br>"
+							);
+							console.log(measurement);
+							console.log(ingredient);
+						}
 					}
-				}
 
-				if (response2.drinks[0].strInstructions !== "null") {
-					$("#recipe-well-" + recipeCounter).append(
-						response2.drinks[0].strInstructions + "<br>"
-					);
-					console.log(response2.drinks[0].strInstructions);
-				}
-			});
+					if (response2.drinks[0].strInstructions !== "null") {
+						$("#recipe-well-" + counter).append(
+							response2.drinks[0].strInstructions + "<br>"
+						);
+						console.log(response2.drinks[0].strInstructions);
+					}
+				});
+			})(recipeCounter);
 		}
 	});
 }
