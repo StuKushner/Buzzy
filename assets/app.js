@@ -11,7 +11,7 @@ var numResults = 0;
 
 //FUNCTIONS
 
-function runQuery(numRecipes) {
+function runQuery(numRecipes, queryURL1) {
 
 	$.ajax({
 		url: queryURL1,
@@ -31,10 +31,12 @@ function runQuery(numRecipes) {
 			$("#well-section").append(wells);
 
 			if (response1.drinks[i].strDrinkThumb !== "null") {
-				$("#recipe-well-" + recipeCounter).append(
-					"<span><strong>" + response1.drinks[i].strDrinkThumb + "</strong></h3>"
-				);
-				console.log(response1.drinks[i].strDrinkThumb);
+				var drinkDisplay = $("<img>");
+          		drinkDisplay.attr("src", response1.drinks[i].strDrinkThumb);
+          		drinkDisplay.attr("class", "displayDrinkPics");
+          		drinkDisplay.width(200);
+				$("#recipe-well-" + recipeCounter).append(drinkDisplay);
+				console.log(drinkDisplay);
 			}
 
 			if (response1.drinks[i].strDrink !== "null") {
@@ -53,9 +55,32 @@ function runQuery(numRecipes) {
 				console.log(queryURL2);
 				console.log(response2);
 
+				var ingredients = [];
+
+				for (var j = 1; j < 15; j++) {
+					var measurement = response2.drinks[0]['strMeasure' + j];
+					var ingredient = response2.drinks[0]['strIngredient' + j];
+
+					if (ingredient !== "") {
+						var ingredientObject = {
+							'measurement': measurement,
+							'ingredient': ingredient
+						};
+						ingredients.push(ingredientObject);
+					}
+				}
+
+				for (var k = 0; k < ingredients.length; k++) {
+					$("#recipe-well-" + recipeCounter).append(
+						ingredients[k].measurement + " " + ingredients[k].ingredient + "<br>"
+					);
+					console.log(ingredients[k].measurement);
+					console.log(ingredients[k].ingredient);
+				}
+
 				if (response2.drinks[0].strInstructions !== "null") {
 					$("#recipe-well-" + recipeCounter).append(
-						response2.drinks[0].strInstructions
+						response2.drinks[0].strInstructions + "<br>"
 					);
 					console.log(response2.drinks[0].strInstructions);
 				}
