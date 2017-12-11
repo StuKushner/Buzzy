@@ -1,42 +1,42 @@
 <!DOCTYPE html>
-
 <html lang="en-us">
-
   <head>
-
     <meta charset="UTF-8">
     <title>Buzzy</title>
     <!-- Form CSS files -->
     <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
-
     <!-- jQuery -->
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <!--Parsley.js -->
     <script src="parsley.min.js"></script>
-
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <!-- My stylesheet -->
     <link rel="stylesheet" href="assets/style.css">
   
      <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-
     <!-- BuzzyAPI.js -->
     <script src="assets/BuzzyAPI.js"></script>
-
-  
-
+<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
-
   <body>
-
     <!-- Buzzy -->
     <div class="container">
       <div id="basic-modal">
@@ -53,25 +53,21 @@
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
-
   <!-- Wrapper for slides -->
   <div class="carousel-inner" style="margin-top:20px;border:solid thin #000000;border-radius: 10px">
     <div class="item active">
       <img src="assets/images/billboard1.png" alt="Buzzy Cocktails">
       <!--could add text here to overlay the billboard graphics <div class="carousel-caption"></div>-->
     </div>
-
     <div class="item">
       <img src="assets/images/billboard2.png" alt="Buzzy Cocktails">
       <!--could add text here to overlay the billboard graphics <div class="carousel-caption"></div>-->
     </div>
-
     <div class="item">
       <img src="assets/images/billboard3.png" alt="Buzzy Cocktails">
       <!--could add text here to overlay the billboard graphics <div class="carousel-caption"></div>-->
     </div>
   </div>
-
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
@@ -82,22 +78,18 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
-
-      <div class="row" style="margin-top: 50px;">
-
-        <div class="col-lg-12" align="center">
-
-          <h1>Create your own cocktails!</h1>
+      <div class="row" style="margin-top:50px;">
+ <div class="col-sm-12" align="center"><h1>Create your own cocktails!</h1>
           <p class="lead">Enter up to three ingredients which you have on hand, in the form fields below.<br/>Then, we will display recipes for any cocktails which you can create with the ingredients you have.</p>
-
+        </div>
+        <div class="col-sm-8">
+        
           <!-- Add Ingredients  -->
           <div class="panel panel-primary" align="left">
             <div class="panel-heading">
               <h3 class="panel-title"><strong>Add the ingredients you have on hand...</strong></h3>
             </div>
             <div class="panel-body">
-
               <!-- Form -->
               <form>
                 <div class="form-group">
@@ -106,33 +98,28 @@
                 </div>
                 <div class="form-group">
                   <label for="pwd">How Many Results Do You Want?</label>
-
                   <select class="form-control" id="num-recipes-select">
-
                     <option value="1" selected>1</option>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
                     <option value="20">20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
                   </select>
                 </div>
                 
                 <button type="submit" class="btn btn-success" id="add-submit-btn" style="background-color:#7CB900">Submit</button>
-                <button type="reset" class="btn btn-default" id="add-reset-btn" style="background-color:#006bc8;color:#ffffff">Reset</button>
+                <button type="submit" class="btn btn-default" id="add-reset-btn" style="background-color:#006bc8;color:#ffffff">Reset</button>
               </form>
-
             </div>
-
           </div>
-
+ 
         </div>
-
-      </div>
-
-      <div class="row" style="margin-top: 50px;">
-        <div class="col-lg-12" align="center">
+<div class="col-sm-4">
+<h2 style="text-align:left;">Or, find a local bar!</h2>
+<div><iframe src="map.html" style="height:320px;width:375px;border:solid thin #000000;border-radius:8px;"></iframe></div>
+</div>
+      <div class="row" style="margin-left:3px;">
+        <div class="col-lg-12" align="center" style="margin-top:20px;">
           <div class="panel panel-primary" align="left">
             <div class="panel-heading">
               <h3 class="panel-title"><strong>Results</strong></h3>
@@ -142,52 +129,29 @@
           </div>
         </div>
       </div>
-
     </div>
     <div id="basic1-modal-content">
       <div class="bs-callout bs-callout-warning hidden">
   <h4>Oh snap!</h4>
   <p>This form seems to be invalid :(</p>
 </div>
-
 <div class="bs-callout bs-callout-info hidden">
   <h4>Yay!</h4>
   <p>Everything seems to be ok :)</p>
 </div>
-<h2>Login</h2>
+<h3>Login</h3>
 <p>You must be over 21 to continue!</p>
 <form id="demo-form" data-parsley-validate="">
   <label for="Username">Username * :</label>
   <input type="text" class="form-control" name="Username" required="" id="Username">
 <br/>
-
-
-
   <label for="email">Email * :</label>
   <input type="email" class="form-control" name="email" data-parsley-trigger="change" required="">
-
 <br/>
   
   <input type="submit" class="btn btn-default" value="Submit" id="add-user-pass-button">
-
-  
 </form>
-
-<script type="text/javascript">
-$(function () {
-  $('#demo-form').parsley().on('field:validated', function() {
-    var ok = $('.parsley-error').length === 0;
-    $('.bs-callout-info').toggleClass('hidden', !ok);
-    $('.bs-callout-warning').toggleClass('hidden', ok);
-  })
-  .on('form:submit', function() {
-    return false; // Don't submit form for this demo
-  });
-});
-</script>
       
-
-
     </div>
     <!-- sign up form -->
     <div id="basic-modal-content">
@@ -195,12 +159,11 @@ $(function () {
   <h4>Oh snap!</h4>
   <p>This form seems to be invalid :(</p>
 </div>
-
 <div class="bs-callout bs-callout-info hidden">
   <h4>Yay!</h4>
   <p>Everything seems to be ok :)</p>
 </div>
-<h2>Sign Up</h2>
+<h3>Sign Up</h3>
 <form id="demo-form" data-parsley-validate="">
   <label for="fullname">Full Name * :</label>
   <input type="text" class="form-control" name="fullname" required="" id="fullname">
@@ -208,20 +171,14 @@ $(function () {
   <label for="email">Email * :</label>
   <input type="email" class="form-control" name="email" data-parsley-trigger="change" required="" id="email">
 <br/>
-
-
   <label for="birthday">Birthday (YOU MUST BE OVER 21 TO PROCEED!) * :</label>
-
   <input type="text" class="form-control" name="birthday" data-parsley-trigger="change" required="" id="birthday">
-
-
-
   <br/>
   <input type="submit" class="btn btn-default" value="Submit" id="add-new-user-btn">
-
   
 </form>
-
+    </div>
+    <!-- Script -->
 <script type="text/javascript">
 $(function () {
   $('#demo-form').parsley().on('field:validated', function() {
@@ -234,15 +191,11 @@ $(function () {
   });
 });
 </script>
-      
-    </div>
-
-    <!-- Script -->
 <script src="assets/app.js"></script>
 <!-- Load jQuery, SimpleModal and Basic JS files -->
 <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
 <script type='text/javascript' src='js/basic.js'></script>
 <!-- Link to the documentation for this modal: http://www.ericmmartin.com/projects/simplemodal/  -->
+<footer class="footer"><div class="container"><p>&copy; Copyright, 2017. All rights reserved. | Stuart Kushner, Paul Schwartz, Patricia Smith</p></div></footer>
   </body>
-
 </html>
