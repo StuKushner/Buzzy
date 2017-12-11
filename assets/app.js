@@ -45,7 +45,9 @@ function runQuery(numRecipes, queryURL1) {
 					recipeCounter + ") <span><strong> " +
 					response1.drinks[i].strDrink + "</strong></h3>"
 				);
+
 				console.log(response1.drinks[i].strDrink);
+
 			}
 
 			(function(counter) {
@@ -82,6 +84,7 @@ function runQuery(numRecipes, queryURL1) {
 }
 
 $(document).on("click", "#add-submit-btn", function(event) {
+
 	event.preventDefault();
 	recipeCounter = 0;
 	$("#well-section").empty();
