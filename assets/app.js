@@ -55,27 +55,17 @@ function runQuery(numRecipes, queryURL1) {
 				console.log(queryURL2);
 				console.log(response2);
 
-				var ingredients = [];
+				for (var i = 0; i <= 15; i++) {
+					var measurement = response2.drinks[0]['strMeasure' + i];
+					var ingredient = response2.drinks[0]['strIngredient' + i];
 
-				for (var j = 1; j < 15; j++) {
-					var measurement = response2.drinks[0]['strMeasure' + j];
-					var ingredient = response2.drinks[0]['strIngredient' + j];
-
-					if (ingredient !== "") {
-						var ingredientObject = {
-							'measurement': measurement,
-							'ingredient': ingredient
-						};
-						ingredients.push(ingredientObject);
+					if (ingredient) {
+						$("#recipe-well-" + recipeCounter).append(
+							measurement + " " + ingredient + "<br>"
+						);
+						console.log(measurement);
+						console.log(ingredient);
 					}
-				}
-
-				for (var k = 0; k < ingredients.length; k++) {
-					$("#recipe-well-" + recipeCounter).append(
-						ingredients[k].measurement + " " + ingredients[k].ingredient + "<br>"
-					);
-					console.log(ingredients[k].measurement);
-					console.log(ingredients[k].ingredient);
 				}
 
 				if (response2.drinks[0].strInstructions !== "null") {
@@ -84,7 +74,7 @@ function runQuery(numRecipes, queryURL1) {
 					);
 					console.log(response2.drinks[0].strInstructions);
 				}
-			})
+			});
 		}
 	});
 }
