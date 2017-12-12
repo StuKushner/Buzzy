@@ -128,10 +128,12 @@ $(document).on("click", "#add-submit-btn", function(event) {
 	recipeCounter = 0;
 	$("#well-section").empty();
 	ingredient1 = $("#first-ingredient").val().trim();
-	var searchURL = queryURL1 + ingredient1;
-	numResults = $("#num-recipes-select").val();
-	console.log(numResults);
-	console.log(searchURL);
+	if (ingredient1) {
+		var searchURL = queryURL1 + ingredient1;
+		numResults = $("#num-recipes-select").val();
+		console.log(numResults);
+		console.log(searchURL);
+	}
 
 	runQuery(numResults, searchURL);
 });
