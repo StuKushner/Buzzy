@@ -11,6 +11,45 @@ var numResults = 0;
 
 //FUNCTIONS
 
+//Initialize Firebase
+var config = {
+   apiKey: "AIzaSyBXibrzv1-R0q7Cdid91Kp6EViGuMCdxqw",
+   authDomain: "project1-buzzy.firebaseapp.com",
+   databaseURL: "https://project1-buzzy.firebaseio.com",
+   projectId: "project1-buzzy",
+   storageBucket: "project1-buzzy.appspot.com",
+   messagingSenderId: "533067457272"
+};
+firebase.initializeApp(config);
+var dataRef = firebase.database();
+
+var fullName = "";
+var email = "";
+var age = "";
+var searchLog = "";
+
+$("#add-new-user-btn").on("click", function(event) {
+     event.preventDefault();
+     // YOUR TASK!!!
+     // Code in the logic for storing and retrieving the most recent user.
+     // Don't forget to provide initial data to your Firebase database.
+     fullName = $("#fullname").val().trim();
+     email = $("#email").val().trim();
+     age = $("#birthday").val().trim();
+     // Code for the push
+     dataRef.ref().push({
+       fullName: fullName,
+       email: email,
+       age: age,
+       dateAdded: firebase.database.ServerValue.TIMESTAMP,
+       searchlog: searchLog
+     });
+
+     $("#fullname").val("");
+     $("#email").val("");
+     $("#birthday").val("");
+   });
+
 function runQuery(numRecipes, queryURL1) {
 
 	$.ajax({
