@@ -50,6 +50,26 @@ $("#add-new-user-btn").on("click", function(event) {
      $("#birthday").val("");
    });
 
+$("#add-user-pass-button").on("click", function(event) {
+    // console.log('inside to');
+      event.preventDefault();
+      fullName2 = $("#fullName2").val().trim();
+      email2 = $("#email2").val().trim();
+      dataRef.ref().on("child_added", function(childSnapshot) {
+      console.log(childSnapshot.val().fullName);
+      
+      if (fullName2 == childSnapshot.val().fullName && email2 == childSnapshot.val().email) {
+      console.log(fullName2);
+      // Appends message to the confirmed div in the html modal form
+      $("#confirmed").append("<span id='NameFound'> Welcome " + childSnapshot.val().fullName +
+        "  :) </span>");
+      }
+      
+      }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+      });
+});
+
 function runQuery(numRecipes, queryURL1) {
 
 	$.ajax({
